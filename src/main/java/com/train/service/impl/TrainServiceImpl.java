@@ -5,11 +5,16 @@ import com.train.entity.TrainEntity;
 import com.train.repository.TrainRepository;
 import com.train.service.TrainService;
 import com.train.service.converter.TrainDTOConverter;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -53,14 +58,22 @@ public class TrainServiceImpl implements TrainService
 	}
 
 	@Override
-	public ResponseEntity update(final TrainDTO dto)
-	{
-		return null;
-	}
-
-	@Override
 	public Optional<TrainEntity> getOne(final Long id)
 	{
 		return trainRepository.findById(id);
+	}
+
+	@SneakyThrows
+	@Override
+	public List<TrainDTO> getByParams(final String fromPoint, final String toPoint, final String date)
+	{
+		List<TrainEntity> trainEntities = trainRepository.findTrains(fromPoint, toPoint, date);
+		if (!trainEntities.isEmpty())
+		{
+			return trainEntities.stream().
+					map(converter::convertToDTO).collect(Collectors.toList());
+		}
+
+		return Collections.emptyList();
 	}
 }

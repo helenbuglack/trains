@@ -28,9 +28,6 @@ public class TicketEntity
 	@Column(name = "number_person")
 	private int numberPerson;
 
-	@Column(name = "status")
-	private String status;
-
 	@Column(name = "from_point")
 	private String fromPoint;
 
@@ -39,6 +36,15 @@ public class TicketEntity
 
 	@Column(name = "date_time")
 	private String time;
+
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "surname")
+	private String surname;
+
+	@Column(name = "passport")
+	private String passport;
 
 	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id")

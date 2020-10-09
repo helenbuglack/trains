@@ -107,6 +107,7 @@
             "routePoints": routePoints,
             "duration": duration,
         });
+        alert(JSON.stringify(trainDTO));
         $.ajax({
             type: "Post",
             url: "/train/new",

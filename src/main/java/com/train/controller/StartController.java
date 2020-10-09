@@ -1,5 +1,6 @@
 package com.train.controller;
 
+import com.train.entity.AccountEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,15 @@ public class StartController
 			modelAndView.addObject("msg", "You've been logged out successfully.");
 		}
 		modelAndView.setViewName("welcomePage");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/ticket")
+	public ModelAndView getPageForCreatingTicket()
+	{
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("createTicketPage");
 
 		return modelAndView;
 	}

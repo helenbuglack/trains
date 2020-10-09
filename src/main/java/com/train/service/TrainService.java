@@ -16,7 +16,7 @@ public interface TrainService
 
 	ResponseEntity delete(Long id);
 
-	ResponseEntity update(TrainDTO dto);
-
 	Optional<TrainEntity> getOne(Long id);
+
+	List<TrainDTO> getByParams(String fromPoint, String toPoint, String date);
 }

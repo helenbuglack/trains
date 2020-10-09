@@ -13,6 +13,8 @@ import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,8 +66,16 @@ public class AccountServiceImpl implements AccountService
 	@Override
 	public List<AccountEntity> getAccountsByParams(final String phone, final String email)
 	{
-		List<AccountEntity> accountEntityList = accountRepository.findAccountByEmailOrPhone(email, phone);
-		return accountEntityList;
+		return accountRepository.findAccountByEmailOrPhone(email, phone);
+	}
+
+	@Override
+	public AccountEntity getCurrentAccount()
+	{
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String email = authentication.getName();
+
+		return accountRepository.findByEmail(email);
 	}
 
 

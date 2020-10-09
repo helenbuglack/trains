@@ -12,4 +12,6 @@ public interface AccountService
 	ResponseEntity<String> createAccount(AccountDTO accountDTO);
 
 	List<AccountEntity> getAccountsByParams(String phone, String email);
+
+	AccountEntity getCurrentAccount();
 }

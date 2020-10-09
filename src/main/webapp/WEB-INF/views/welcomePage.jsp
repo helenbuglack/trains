@@ -64,14 +64,14 @@
 </div>
 
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-    <a href="/trains">Управление поездами????</a>
+    <a href="/train/all">Управление поездами????</a>
+    <a href="/account/current">Account</a>
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_USER')">
-  user
+  user   <a href="/ticket">Билеты</a>
 </sec:authorize>
 <script>
     function signUp() {
-        alert("'here");
         var name = $('#nameSignUp').val();
         var phone = $('#phoneSignUp').val();
         var email = $('#emailSignUp').val();

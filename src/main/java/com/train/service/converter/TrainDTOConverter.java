@@ -43,8 +43,8 @@ public class TrainDTOConverter implements Converter<TrainEntity, TrainDTO>
 		entity.setId(dto.getId());
 		entity.setFromPoint(dto.getFromPoint());
 		entity.setToPoint(dto.getToPoint());
-		entity.setExitDate(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getExitDate()));
-		entity.setArrivalDate(new SimpleDateFormat("yyyy-MM-dd").parse(dto.getArrivalDate()));
+		entity.setExitDate(dto.getExitDate());
+		entity.setArrivalDate(dto.getArrivalDate());
 		entity.setExitTime(dto.getExitTime());
 		entity.setArrivalTime(dto.getArrivalTime());
 		entity.setType(dto.getType());

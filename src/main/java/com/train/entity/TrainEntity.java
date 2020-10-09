@@ -36,10 +36,10 @@ public class TrainEntity
 	private String toPoint;
 
 	@Column(name = "exit_date")
-	private Date exitDate;
+	private String exitDate;
 
 	@Column(name = "arrival_date")
-	private Date arrivalDate;
+	private String arrivalDate;
 
 	@Column(name = "exit_time")
 	private String exitTime;
