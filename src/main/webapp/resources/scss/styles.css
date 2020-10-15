@@ -1,0 +1,35 @@
+@import '_reset.css';
+@import '_grid.css';
+@import '_typography.css';
+@import '_forms.css';
+@import '_links.css';
+@import '_header.css';
+@import '_main.css';
+
+@import '_footer.css';
+@import 'components/_post.css';
+@import '/components/_auth.css';
+@import '/components/_comments.css';
+@import 'components/_user.css';
+
+
+
+
+
+
+html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+body {
+  flex: auto;
+  color: #333;
+  background: url('../images/train.jpg') no-repeat;
+background-size: cover;
+  opacity:0.9;
+  padding-top: 64px;
+
+}
+

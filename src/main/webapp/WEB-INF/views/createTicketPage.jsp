@@ -6,38 +6,45 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Create ticket</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" type="text/css"/>
-    <script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<%@ include file="components/header.jsp" %>
+<div class="main">
+    <div class="container">
+        <div class="content add-post">
+            <form method="post" class="update">
+                <h2>Оформление билета</h2>
+                <div class="form-group">
+                    <label for="numberPerson">Колво мест</label>
+                    <input type="number" id="numberPerson" name="numberPerson" class="form-control" placeholder="Колво мест" required>
 
-    <link rel="stylesheet" href="/css/navbar-style.css" type="text/css">
-    <link rel="stylesheet" href="/css/forWelcomePage.css" type="text/css">
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-</head>
-<body>
-<div>
-    <div class="form-label-group">
-        <input type="number" id="numberPerson" name="numberPerson" class="form-control" placeholder="Колво мест" required>
-        <label for="numberPerson">Колво мест</label>
+                </div>
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Имя" required>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Фамилия</label>
+                    <input type="text" id="surname" name="surname" class="form-control" placeholder="Фамилия" required>
+                </div>
+                <div class="form-group">
+                    <label for="passport">Паспорт</label>
+                    <input type="text" id="passport" name="passport" class="form-control" placeholder="Паспорт" required>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn btn-primary btn-block" id="Save"
+                            onclick="create()">Оформить
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    <div class="sidebar">
+        <%@ include file="components/sidebar.jsp" %>
     </div>
-
-</div>
-<div>
-    <div class="form-label-group">
-        <input type="text" id="name" name="name" class="form-control" placeholder="Имя" required>
-        <input type="text" id="surname" name="surname" class="form-control" placeholder="Фамилия" required>
-        <input type="text" id="passport" name="passport" class="form-control" placeholder="Паспорт" required>
-
     </div>
-
-    <button class="btn btn-primary btn-block" id="Save"
-            onclick="create()">Оформить
-    </button>
 </div>
+
 </body>
 <script>
     function create() {
@@ -77,3 +84,6 @@
     };
 </script>
 </html>
+
+
+

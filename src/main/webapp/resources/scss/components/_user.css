@@ -1,0 +1,66 @@
+.table {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 11px;
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(246,246,240,1);
+  border-radius: 2px;
+  text-align: center;
+}
+.table th {
+  color: rgba(10,0,4,1);
+  border-bottom: 1px solid #F4A460;
+  padding: 12px 8px;
+}
+.table td {
+  color: #333333;
+  border-bottom: 1px solid #F4A460;
+  border-right:1px solid #F4A460;
+  padding: 7px 8px;
+}
+.table tr:last-child td {
+  border-bottom: none;
+}
+.table td:last-child {
+  border-right: none;
+}
+.table tr:hover td {
+  text-decoration: underline;
+}
+
+.table thead {
+  background: #F4A460;
+  border-radius: 2px;
+}
+
+.c {
+  border: 1px; /* Рамка */
+  display: inline-block;
+  padding: 6px 15px; /* Поля */
+  text-decoration: none; /* Убираем подчёркивание */
+  color: white; /* Цвет текста */
+  background: #F4A460;
+  border-radius: 2px;
+}
+.c:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
+  background: #F4A460; /* Градиент */
+  color: #fff;
+  text-decoration: none;
+}
+
+.d {
+  border: 1px solid #FA8072; /* Рамка */
+  display: inline-block;
+  padding: 6px 15px; /* Поля */
+  text-decoration: none; /* Убираем подчёркивание */
+  color: #FA8072; /* Цвет текста */
+  background: #fff;
+  border-radius: 2px;
+}
+.d:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Тень */
+  background: #fff; /* Градиент */
+  color: #FA8072;
+  text-decoration: none;
+}

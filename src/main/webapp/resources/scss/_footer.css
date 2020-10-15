@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  height: 49px;
+//  border-top: 1px solid whitesmoke;
+  background-color: #FFDEAD;
+
+}
+ .container  {
+    height: 100%;
+    line-height:49px;
+  }
+

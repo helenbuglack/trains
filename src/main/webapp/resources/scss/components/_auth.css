@@ -1,0 +1,33 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.7em;
+}
+
+form, div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttons button {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+div .register {
+    display: none;
+}
+
+
+
+

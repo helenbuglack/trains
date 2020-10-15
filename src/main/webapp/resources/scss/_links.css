@@ -1,0 +1,11 @@
+a,
+.link,
+.a {
+  color: #F4A460;
+  text-decoration: none;
+  cursor: pointer;
+}
+  a:hover {
+    text-decoration: none;
+  }
+
