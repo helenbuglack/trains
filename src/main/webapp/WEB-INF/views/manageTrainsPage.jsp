@@ -17,8 +17,8 @@
                     <th>id</th>
                     <th scope="col">Откуда</th>
                     <th scope="col">Куда</th>
-                    <th scope="col">Дата 1</th>
-                    <th scope="col">Дата 2</th>
+                    <th scope="col">Дата отправления</th>
+                    <th scope="col">Дата прибытия</th>
                     <th scope="col">Тип</th>
                     <th scope="col">Стоимость</th>
                     <th scope="col">Количество мест</th>
@@ -33,8 +33,8 @@
                         <th>${train.id}</th>
                         <th>${train.fromPoint}</th>
                         <th>${train.toPoint}</th>
-                        <th>${train.exitDate}-${train.exitTime}</th>
-                        <th>${train.arrivalDate}-${train.arrivalTime}</th>
+                        <th>${train.exitDate} ${train.exitTime}</th>
+                        <th>${train.arrivalDate} ${train.arrivalTime}</th>
                         <th>${train.type}</th>
                         <th>${train.cost}</th>
                         <th>${train.seatingCapacity}</th>

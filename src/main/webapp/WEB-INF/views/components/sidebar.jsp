@@ -24,16 +24,20 @@
                         </button>
                     </div>
                 </div>
-
+<div class="box auth" >
+<div style="width:250px">
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <a href="/train/all">Управление поездами????</a>
-                    <a href="/account/current">Account</a>
+                 admin<br>   <a style="color: #333333" href="/train/all">Добавить маршрут</a><br>
+                    <a style="color: #333333" href="/???">Просмотреть брони</a><br>
+                    <a style="color: #333333" href="/logout">Выйти</a>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    user   <a href="/ticket">Билеты</a>
+                    user<br>   <a style="color: #333333" href="/ticket">Оформить билет</a><br>
+                    <a style="color: #333333" href="/???">Просмотреть брони</a><br>
+                    <a style="color: #333333" href="/logout">Выйти</a>
                 </sec:authorize>
+</div>
                 <sec:authorize access="isAnonymous()">
-                    <div class="box auth" >
                     <form id="loginForm"  action="/j_spring_security_check" method="post" class="login">
                         <h2>Вход</h2>
                         <div class="form-group">
@@ -104,7 +108,7 @@
             data: JSON.stringify(accountDTO),
             success: function (res) {
                 alert("cool")
-                $(location).attr('href', '/ticket');
+                $(location).attr('href', '/');
             },
             error: function (res) {
                 // if (res.responseJSON === "Unique fields error") {

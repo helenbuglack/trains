@@ -93,7 +93,11 @@ input.error,textarea.error,div.error {
       color: #e82c0c;
     }
 
-
+form.search {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
 
 
 
