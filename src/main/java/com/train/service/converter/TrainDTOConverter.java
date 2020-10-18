@@ -22,13 +22,14 @@ public class TrainDTOConverter implements Converter<TrainEntity, TrainDTO>
 		dto.setId(entity.getId());
 		dto.setFromPoint(entity.getFromPoint());
 		dto.setToPoint(entity.getToPoint());
-		dto.setExitDate(entity.getExitDate().toString());
-		dto.setArrivalDate(entity.getArrivalDate().toString());
+		dto.setExitDate(entity.getExitDate());
+		dto.setArrivalDate(entity.getArrivalDate());
 		dto.setExitTime(entity.getExitTime());
 		dto.setArrivalTime(entity.getArrivalTime());
 		dto.setType(entity.getType());
 		dto.setCost(entity.getCost());
 		dto.setSeatingCapacity(entity.getSeatingCapacity());
+		dto.setFreeSeats(entity.getFreeSeats());
 		dto.setRoutePoints(entity.getRoutePoints());
 		dto.setDuration(entity.getDuration());
 
@@ -50,6 +51,7 @@ public class TrainDTOConverter implements Converter<TrainEntity, TrainDTO>
 		entity.setType(dto.getType());
 		entity.setCost(dto.getCost());
 		entity.setSeatingCapacity(dto.getSeatingCapacity());
+		entity.setFreeSeats(dto.getFreeSeats());
 		entity.setRoutePoints(dto.getRoutePoints());
 		entity.setDuration(dto.getDuration());
 

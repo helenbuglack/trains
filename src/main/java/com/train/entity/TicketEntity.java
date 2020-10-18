@@ -28,6 +28,9 @@ public class TicketEntity
 	@Column(name = "number_person")
 	private int numberPerson;
 
+	@Column(name = "seats")
+	private String seats;
+
 	@Column(name = "from_point")
 	private String fromPoint;
 

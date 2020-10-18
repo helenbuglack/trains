@@ -8,76 +8,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="components/header.jsp" %>
 <div class="main">
-    <div class="container" style="    justify-content: center;" >
+    <div class="container" style="    justify-content: center;">
         <div class="content add-post">
             <h2>Поиск поездов</h2>
             <form method="post" class="search">
                 <div class="form-group">
                     <label for="fromPoint">Откуда</label>
-                    <input type="text" id="fromPoint" name="fromPoint" value="Минск" />
+                    <input type="text" id="fromPoint" name="fromPoint" value="Минск"/>
 
                 </div>
                 <div class="form-group">
                     <label for="toPoint">Куда</label>
-                    <input type="text" id="toPoint" name="toPoint" value="Москва" />
+                    <input type="text" id="toPoint" name="toPoint" value="Москва"/>
                 </div>
                 <div class="form-group">
                     <label for="exitDate">Дата отправления</label>
-                    <input type="date" id="exitDate" name="exitDate" value="" />
+                    <input type="date" id="exitDate" name="exitDate" value=""/>
                 </div>
-                <div  class="buttons" style="align-items: flex-end; margin-bottom: 16px ">
-                    <button class="update-button"  onclick="search()" >Поиск</button>
+                <div class="buttons" style="align-items: flex-end; margin-bottom: 16px ">
+                    <button class="update-button" onclick="search(); return false;">Поиск</button>
                 </div>
             </form>
-            <hr> <br>
-
-            <table  class="table">
-                <thead>
-                <tr>
-                    <th>id</th>
-                    <th scope="col">Откуда</th>
-                    <th scope="col">Куда</th>
-                    <th scope="col">Дата отправления</th>
-                    <th scope="col">Дата прибытия</th>
-                    <th scope="col">Тип</th>
-                    <th scope="col">Стоимость</th>
-                    <th scope="col">Количество мест</th>
-                    <th scope="col">Маршрут</th>
-                    <th scope="col">Длительность</th>
-<sec:authorize access="hasRole('ROLE_USER')">
-                    <th scope="col">Забронировать</th>
-</sec:authorize>
-                </tr>
-                </thead>
-                <tbody id="tBody">
-                <c:forEach var="train" items="${trains}">
-                    <tr id="row_" +${train.id}>
-                        <th>${train.id}</th>
-                        <th>${train.fromPoint}</th>
-                        <th>${train.toPoint}</th>
-                        <th>${train.exitDate} ${train.exitTime}</th>
-                        <th>${train.arrivalDate} ${train.arrivalTime}</th>
-                        <th>${train.type}</th>
-                        <th>${train.cost}</th>
-                        <th>${train.seatingCapacity}</th>
-                        <th>${train.routePoints}</th>
-                        <th>${train.duration}</th>
-                        <sec:authorize access="hasRole('ROLE_USER')">
-                       <th><button class="btn btn-primary btn-block" id="signUpBtn"
-                                onclick="booking()">Забронировать
-                        </button></th>
-                        </sec:authorize>
-                    </tr>
-                </c:forEach>
-                </tbody>
-
-
-            </table>
+            <hr>
+            <br>
+            <div id="table"></div>
         </div>
 
-<div class="sidebar">
-        <%@ include file="components/sidebar.jsp" %>
-    </div>
+        <div class="sidebar">
+            <%@ include file="components/sidebar.jsp" %>
+        </div>
     </div>
 </div>
 <script>
@@ -85,48 +44,51 @@
         var fromPoint = $('#fromPoint').val();
         var toPoint = $('#toPoint').val();
         var exitDate = $('#exitDate').val();
-        var trainDTO = ({
-            "fromPoint": fromPoint,
-            "toPoint": toPoint,
-            "exitDate": exitDate,
-        });
-
         $.ajax({
-            type: "Post",
-            url: "/train/search",
-            contentType: "application/json;charset=utf-8",
-            data: JSON.stringify(trainDTO),
-            success: function (res) {
-                location.reload();
+            type: "GET",
+            url: "/train/search?from=" + fromPoint + "&to=" + toPoint + "&date=" + exitDate,
+            success: function (data) {
+                $('#table')
+                var html = "            <table  class=\"table\">\n" +
+                    "                <thead>\n" +
+                    "                <tr>\n" +
+                    "                    <th scope=\"col\">Откуда</th>\n" +
+                    "                    <th scope=\"col\">Куда</th>\n" +
+                    "                    <th scope=\"col\">Дата отправления</th>\n" +
+                    "                    <th scope=\"col\">Дата прибытия</th>\n" +
+                    "                    <th scope=\"col\">Тип</th>\n" +
+                    "                    <th scope=\"col\">Стоимость</th>\n" +
+                    "                    <th scope=\"col\">Количество мест</th>\n" +
+                    "                    <th scope=\"col\">Маршрут</th>\n" +
+                    "                    <th scope=\"col\">Длительность</th>";
+                <sec:authorize access="hasRole('ROLE_USER')">
+                html += " <th scope=\"col\">Забронировать</th>";
+                </sec:authorize>
+                html += "  <tbody id=\"tBody\">"
+                for (var i = 0; i < data.length; i++) {
+                    html += "<tr id='row_" + data[i].id + "'><td>" + data[i].fromPoint + "</td><td>" + data[i].toPoint + "</td><td>" +
+                        data[i].exitDate + " " + data[i].exitTime + "</td><td>" + data[i].arrivalDate + " " + data[i].arrivalTime + "</td><td>" +
+                        data[i].type + "</td><td>" + data[i].cost + "</td><td>" +
+                        data[i].seatingCapacity + "</td><td>" + data[i].routePoints + "</td><td>" + data[i].duration;
+                    <sec:authorize access="hasRole('ROLE_USER')">
+                    html += "  <th>\n" +
+                        "                                                <a style='color: #333333' class=\"btn btn-primary btn-block\" id=\"signUpBtn\"\n" +
+                        "                                                        href='/ticket/new?trainId=" + data[i].id + "'>Забронировать\n" +
+                        "                                                </a>\n" +
+                        "                                            </th>";
+                    </sec:authorize>
+                    html += "  </tr>";
+                }
+                html += "</tbody> </table>";
+
+                $('#table').append(html);
             },
             error: function (res) {
-                // if (res.responseJSON === "Unique fields error") {
-                //     $('#uniqueFieldSignUpMistake').show();
-                // } else if (res.responseJSON === "Empty fields error") {
-                //     $('#emptyFieldSignUpMistake').show();
-                // } else {
-                //     $("#signUpModal").modal("hide");
-                //     $("#errorForm")[0].reset();
-                //     $("#errorModal").modal();
-                // }
-                alert("error");
+                alert("К сожалению, по вашему запросу ничгео не найдено");
             }
         })
     };
 
-    function booking(id) {
-        $.ajax({
-            type: "post",
-            url: "/train/delete/" + id,
-            success: function (res) {
-                $('#row' + id).remove();
-                location.reload();
-            },
-            error: function (res) {
-
-            }
-        });
-    };
 </script>
 </body>
 

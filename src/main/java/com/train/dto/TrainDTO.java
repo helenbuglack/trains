@@ -28,6 +28,8 @@ public class TrainDTO
 
 	private String seatingCapacity;
 
+	private String freeSeats;
+
 	private String routePoints;
 
 	private String duration;

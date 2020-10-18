@@ -27,13 +27,17 @@
 <div class="box auth" >
 <div style="width:250px">
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                 admin<br>   <a style="color: #333333" href="/train/all">Добавить маршрут</a><br>
+                    ${pageContext.request.userPrincipal.name}
+                    <br>
+                    <a style="color: #333333" href="/train/all">Добавить маршрут</a><br>
                     <a style="color: #333333" href="/???">Просмотреть брони</a><br>
                     <a style="color: #333333" href="/logout">Выйти</a>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    user<br>   <a style="color: #333333" href="/ticket">Оформить билет</a><br>
+                    ${pageContext.request.userPrincipal.name}
+                    <br>
                     <a style="color: #333333" href="/???">Просмотреть брони</a><br>
+                    <a style="color: #333333" href="/ticket/about">Последний билет</a><br>
                     <a style="color: #333333" href="/logout">Выйти</a>
                 </sec:authorize>
 </div>

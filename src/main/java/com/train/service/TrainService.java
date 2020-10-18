@@ -1,6 +1,7 @@
 package com.train.service;
 
 import com.train.dto.TrainDTO;
+import com.train.entity.TicketEntity;
 import com.train.entity.TrainEntity;
 import org.springframework.http.ResponseEntity;
 
@@ -18,5 +19,9 @@ public interface TrainService
 
 	Optional<TrainEntity> getOne(Long id);
 
+	TrainDTO getTrainDto(Long id);
+
 	List<TrainDTO> getByParams(String fromPoint, String toPoint, String date);
+
+	void updateTrainAfterReservation(TicketEntity ticketEntity);
 }

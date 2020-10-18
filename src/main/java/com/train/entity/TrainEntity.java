@@ -56,6 +56,9 @@ public class TrainEntity
 	@Column(name = "seating_capacity")
 	private String seatingCapacity;
 
+	@Column(name = "free_seats")
+	private String freeSeats;
+
 	@Column(name = "route_points")
 	private String routePoints;
 

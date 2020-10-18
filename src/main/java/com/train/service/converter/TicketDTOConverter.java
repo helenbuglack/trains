@@ -34,6 +34,7 @@ public class TicketDTOConverter implements Converter<TicketEntity, TicketDTO>
 		TicketEntity entity = new TicketEntity();
 
 		entity.setNumberPerson(dto.getNumberPerson());
+		entity.setSeats(dto.getSeats());
 		entity.setAccount(accountService.getCurrentAccount());
 		entity.setTrain(getTrain(dto.getTrainId()));
 		entity.setFromPoint(entity.getTrain().getFromPoint());

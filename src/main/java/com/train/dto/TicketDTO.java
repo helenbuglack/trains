@@ -12,6 +12,8 @@ public class TicketDTO
 
 	private int numberPerson;
 
+	private String seats;
+
 	private String fromPoint;
 
 	private String toPoint;

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="components/header.jsp" %>
+<h3>Вы выбрали маршрут ${train.fromPoint}->${train.toPoint} на ${train.exitDate} </h3>
 <div class="main">
     <div class="container">
         <div class="content add-post">
@@ -14,7 +15,8 @@
                 <h2>Оформление билета</h2>
                 <div class="form-group">
                     <label for="numberPerson">Колво мест</label>
-                    <input type="number" id="numberPerson" name="numberPerson" class="form-control" placeholder="Колво мест" required>
+                    <input type="number" id="numberPerson" name="numberPerson" class="form-control" placeholder="Колво мест"
+                           required>
 
                 </div>
                 <div class="form-group">
@@ -32,16 +34,16 @@
 
                 <div class="buttons">
                     <button class="btn btn-primary btn-block" id="Save"
-                            onclick="create()">Оформить
+                            onclick="create();return false;">Оформить
                     </button>
                 </div>
             </form>
 
         </div>
 
-    <div class="sidebar">
-        <%@ include file="components/sidebar.jsp" %>
-    </div>
+        <div class="sidebar">
+            <%@ include file="components/sidebar.jsp" %>
+        </div>
     </div>
 </div>
 
@@ -52,32 +54,26 @@
         var name = $('#name').val();
         var surname = $('#surname').val();
         var passport = $('#passport').val();
-        var trainId = 4;
+        var trainId = ${train.id};
         var ticketDTO = ({
             "numberPerson": numberPerson,
+            "seats": "1,2",
             "trainId": trainId,
             "name": name,
             "surname": surname,
             "passport": passport
         });
+        alert(JSON.stringify(ticketDTO));
         $.ajax({
             type: "Post",
             url: "/ticket/new",
             contentType: "application/json;charset=utf-8",
             data: JSON.stringify(ticketDTO),
-            success: function (res) {
-                alert("success");
+            success: function () {
+                window.location.replace("http://localhost:8080/ticket/success");
             },
             error: function (res) {
-                // if (res.responseJSON === "Unique fields error") {
-                //     $('#uniqueFieldSignUpMistake').show();
-                // } else if (res.responseJSON === "Empty fields error") {
-                //     $('#emptyFieldSignUpMistake').show();
-                // } else {
-                //     $("#signUpModal").modal("hide");
-                //     $("#errorForm")[0].reset();
-                //     $("#errorModal").modal();
-                // }
+
                 alert("error");
             }
         })
