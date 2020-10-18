@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 
 @RestController
 public class TicketController
@@ -58,8 +60,22 @@ public class TicketController
 	@GetMapping(value = "/ticket/about")
 	public ModelAndView getLatestTicket()
 	{
+		TicketDTO ticketDTO = ticketService.getLatestTicket();
+
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("ticket", ticketDTO);
 		modelAndView.setViewName("aboutTicket");
+
+		return modelAndView;
+	}
+
+	@GetMapping(value = "/tickets")
+	public ModelAndView getTickets()
+	{
+		final List<TicketDTO> ticketDTOList = ticketService.findAll();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("tickets", ticketDTOList);
+		modelAndView.setViewName("showUserTickets");
 
 		return modelAndView;
 	}

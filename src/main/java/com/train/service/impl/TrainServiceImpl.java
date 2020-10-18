@@ -82,8 +82,9 @@ public class TrainServiceImpl implements TrainService
 		if (!trainEntities.isEmpty())
 		{
 			List<TrainEntity> result = new ArrayList<>();
-			String currentDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
-			Time currentTime = new Time(new Date().getTime());
+			String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+			String current = new SimpleDateFormat("HH:mm").format(new Date().getTime());
+			Time currentTime = new Time(new SimpleDateFormat("HH:mm").parse(current).getTime());
 			for (TrainEntity train : trainEntities)
 			{
 				if (train.getExitDate().equals(currentDate))

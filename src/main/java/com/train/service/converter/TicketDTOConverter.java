@@ -25,7 +25,21 @@ public class TicketDTOConverter implements Converter<TicketEntity, TicketDTO>
 	@Override
 	public TicketDTO convertToDTO(TicketEntity ticketEntity)
 	{
-		return null;
+		TicketDTO dto = new TicketDTO();
+
+		dto.setNumberPerson(ticketEntity.getNumberPerson());
+		dto.setSeats(ticketEntity.getSeats());
+		dto.setAccountId(ticketEntity.getAccount().getId());
+		dto.setTrainId(ticketEntity.getTrain().getId());
+		dto.setFromPoint(ticketEntity.getFromPoint());
+		dto.setToPoint(ticketEntity.getToPoint());
+		dto.setExitTime(ticketEntity.getTrain().getExitDate() + " " + ticketEntity.getTrain().getExitTime());
+		dto.setArrivalTime(ticketEntity.getTrain().getArrivalDate() + " " + ticketEntity.getTrain().getArrivalTime());
+		dto.setName(ticketEntity.getName());
+		dto.setSurname(ticketEntity.getSurname());
+		dto.setPassport(ticketEntity.getPassport());
+
+		return dto;
 	}
 
 	@Override

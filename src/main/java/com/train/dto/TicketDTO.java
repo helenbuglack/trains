@@ -18,7 +18,9 @@ public class TicketDTO
 
 	private String toPoint;
 
-	private String time;
+	private String exitTime;
+
+	private String arrivalTime;
 
 	private Long accountId;
 

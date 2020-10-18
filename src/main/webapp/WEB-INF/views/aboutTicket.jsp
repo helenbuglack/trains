@@ -19,22 +19,17 @@
                 <h4><b>Дата прибытия:</b></h4>
                 <h4><b>ФИ:</b></h4>
                 <h4><b>Паспорт:</b></h4>
-                <h4><b>Номер вагона:</b></h4>
                 <h4><b>Номер вашего места:</b></h4>
             </div>
             <div>
-                <h4>Минск</h4>
-                <h4>Москва</h4>
-                <h4>22.10.2020 9.00</h4>
-                <h4>23.10.2020 10.00</h4>
-                <h4>Лещинская Дарья</h4>
-                <h4>MP389202</h4>
-                <h4>2</h4>
-                <h4>5</h4>
+                <h4>${ticket.fromPoint}</h4>
+                <h4>${ticket.toPoint}</h4>
+                <h4>${ticket.exitTime}</h4>
+                <h4>${ticket.arrivalTime}</h4>
+                <h4>${ticket.surname} ${ticket.name}</h4>
+                <h4>${ticket.passport}</h4>
+                <h4>${ticket.seats}</h4>
             </div>
-
-
-
             </div>
         </div>
         <div class="sidebar">

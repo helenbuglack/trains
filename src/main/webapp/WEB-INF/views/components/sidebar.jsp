@@ -36,7 +36,7 @@
                 <sec:authorize access="hasRole('ROLE_USER')">
                     ${pageContext.request.userPrincipal.name}
                     <br>
-                    <a style="color: #333333" href="/???">Просмотреть брони</a><br>
+                    <a style="color: #333333" href="/tickets">Просмотреть брони</a><br>
                     <a style="color: #333333" href="/ticket/about">Последний билет</a><br>
                     <a style="color: #333333" href="/logout">Выйти</a>
                 </sec:authorize>
